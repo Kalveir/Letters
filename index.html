@@ -1,83 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Lamaran Kerja</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    >
     <style>
-        @media print {
-            body {
-                font-family: "Times New Roman", Times, serif;
-                font-size: 12pt;
-                margin: 0;
-            }
-            .print-container {
-                width: 210mm; /* A4 width */
-                height: 297mm; /* A4 height */
-                margin: auto;
-                padding: 20mm;
-                box-sizing: border-box;
-            }
+      @media print {
+        body {
+          font-family: "Times New Roman", Times, serif;
+          font-size: 12pt;
+          margin: 0;
         }
+        .print-container {
+          width: 210mm; /* A4 width */
+          height: 297mm; /* A4 height */
+          margin: auto;
+          padding: 20mm;
+          box-sizing: border-box;
+        }
+      }
     </style>
-</head>
-<body class="bg-light">
+  </head>
+  <body class="bg-light">
     <div class="container mt-5">
-        <!-- Form Lamaran Kerja -->
-        <div class="card shadow">
-            <div class="card-header text-center">
-                <h4 class="mb-0">Form Lamaran Kerja</h4>
-            </div>
-            <div class="card-body">
-                <form id="lamaranForm">
-                	<div class="mb-3">
-                      <label for="date" class="form-label">Tanggal</label>
-                      <input type="date" class="form-control" id="date" name="date" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="namaPerusahaan" class="form-label">Nama Perusahaan</label>
-                        <input type="text" id="namaPerusahaan" name="namaPerusahaan" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="posisiPekerjaan" class="form-label">Posisi Pekerjaan</label>
-                        <input type="text" id="posisiPekerjaan" name="posisiPekerjaan" class="form-control" required>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Kirim</button>
-                    </div>
-                </form>
-            </div>
+      <!-- Form Lamaran Kerja -->
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h4 class="mb-0">Form Lamaran Kerja</h4>
         </div>
+        <div class="card-body">
+          <form id="lamaranForm">
+            <div class="mb-3">
+              <label for="date" class="form-label">Tanggal</label>
+              <input
+                type="date"
+                class="form-control"
+                id="date"
+                name="date"
+                required
+              >
+            </div>
+            <div class="mb-3">
+              <label for="namaPerusahaan" class="form-label"
+              >Nama Perusahaan</label>
+              <input
+                type="text"
+                id="namaPerusahaan"
+                name="namaPerusahaan"
+                class="form-control"
+                required
+              >
+            </div>
+            <div class="mb-3">
+              <label for="posisiPekerjaan" class="form-label"
+              >Posisi Pekerjaan</label>
+              <input
+                type="text"
+                id="posisiPekerjaan"
+                name="posisiPekerjaan"
+                class="form-control"
+                required
+              >
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Kirim</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
     <script>
-        // Menangani submit form
-        document.getElementById('lamaranForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Mencegah reload halaman
+      // Menangani submit form
+      document.getElementById("lamaranForm").addEventListener(
+        "submit",
+        function (e) {
+          e.preventDefault(); // Mencegah reload halaman
 
-            // Ambil nilai dari input
-            const date = document.getElementById('date').value;
-            const namaPerusahaan = document.getElementById('namaPerusahaan').value;
-            const posisiPekerjaan = document.getElementById('posisiPekerjaan').value;
-            //convert tanggal ID
-            const tanggal = new Intl.DateTimeFormat('us-US',{day: 'numeric', month: 'long', year: 'numeric'}).format(new Date(date));
-            // Template teks lamaran kerja
-            const lamaranText = `
+          // Ambil nilai dari input
+          const date = document.getElementById("date").value;
+          const namaPerusahaan =
+            document.getElementById("namaPerusahaan").value;
+          const posisiPekerjaan =
+            document.getElementById("posisiPekerjaan").value;
+          //convert tanggal ID
+          const tanggal = new Intl.DateTimeFormat("us-US", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          }).format(new Date(date));
+          // Template teks lamaran kerja
+          const lamaranText = `
                 <div class="print-container">
                     <p style="text-align:right;">Syeh Abdi Yoga Krisna <br>yogakrisna567@gmail.com <br>Pasuruan, Indonesian <br> ${tanggal}</p>
                      <br>
                     <p style="text-align: justify;">
-                        Hiring Manager <br>
-                        ${namaPerusahaan}
-                        <br>
                         <br>
                         Subject : Application for ${posisiPekerjaan}
                     <p style="style-align : justify;">
                     Dear Hiring Manager,
                     <p>
                     <p style="text-align : justify;">
-                        My name is Syeh Abdi Yoga Krisna. I am a graduate of the Informatics Engineering study program from Merdeka University of Pasuruan. With great enthusiasm, I am applying for the position of ${posisiPekerjaan} at ${namaPerusahaan}. With a background in Informatics Engineering, I have expertise in web development using Laravel and Golang. In addition, I also have the ability to operate the Linux server operating system and a basic understanding of network administration that supports my technical abilities. I believe that the combination of technical competence and commitment to continuous learning makes me a candidate who is ready to contribute to supporting innovation and operational efficiency in the company.
+                       I am Syeh Abdi Yoga Krisna, a graduate of Informatics Engineering from Universitas Merdeka Pasuruan. With great enthusiasm, I am applying for the position of ${posisiPekerjaan} at ${namaPerusahaan}. With a background in Informatics Engineering, I have experience in website development using the Laravel framework and designing modular, scalable backend systems with Golang. I am accustomed to working with various relational and non-relational database systems to ensure optimal data performance. Additionally, I am proficient in using Docker for application containerization in Linux server environments, enabling efficient and consistent deployment. Continuously improving my technical skills and driven by a strong motivation to learn, I am ready to make tangible contributions to support the company’s progress. I am committed to enhancing productivity and work efficiency through the implementation of practical, effective solutions.
                     </p>
                     <p style="text-align: justify;">
                         During my studies, I am experienced in web application development using Laravel. My first project was a Library Information System during my internship at Indonesian Agricultural Standardization Agency, which improved the efficiency of managing books, storing visitor data, and recording borrowing activities. I also participated in Universitas Merdeka Pasuruan's Internal Quality Assurance System project, which has been implemented by the Quality Assurance Center institution to facilitate the assessment and evaluation of learning, facilities and performance of lecturers and staff of each study program. For this contribution, I obtained a Copyright certificate from the Directorate General of Intellectual Property, which facilitated my graduation without a thesis process.
@@ -89,17 +117,19 @@
                       Sincerely, 
                     <br>
                     <br>
+                    <br>
                       Syeh Abdi Yoga Krisna
                   </p>
                 </div>
             `;
 
-            // Mengganti konten halaman
-            document.body.innerHTML = lamaranText;
+          // Mengganti konten halaman
+          document.body.innerHTML = lamaranText;
 
-            // Membuka dialog cetak
-            setTimeout(() => window.print(), 500); // Beri jeda agar halaman selesai dirender sebelum dialog cetak muncul
-        });
+          // Membuka dialog cetak
+          setTimeout(() => window.print(), 500); // Beri jeda agar halaman selesai dirender sebelum dialog cetak muncul
+        },
+      );
     </script>
-</body>
+  </body>
 </html>
